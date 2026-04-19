@@ -116,10 +116,7 @@
 <br><sub>A warm, unified dashboard for managing home game servers — Minecraft, 7 Days to Die, Hytale & more.</sub>
 </td>
 <td width="50%" valign="top">
-<a href="https://github.com/Kitsune-Den/skulk-skills">
-<img src="https://github-readme-stats.vercel.app/api/pin/?username=Kitsune-Den&repo=skulk-skills" />
-</a>
-<br><sub>Version-controlled source of truth for the Skulk's personal claude.ai skills.</sub>
+<!-- room for next cross-game tool -->
 </td>
 </tr>
 </table>
