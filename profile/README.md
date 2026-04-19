@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🦊 Kitsune-Den
+![Kitsune-Den — Modding Tools & Server Management for Survival Games](https://raw.githubusercontent.com/Kitsune-Den/.github/main/profile/hero.jpg)
 
 **Mods, tools, and server infrastructure for survival games.**
 *Built by [Ada](https://github.com/AdaInTheLab), tested by chaos.*
