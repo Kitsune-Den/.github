@@ -41,7 +41,7 @@
 <a href="https://github.com/Kitsune-Den/KitsunePaintUnlocked">
 <img src="https://github-readme-stats.vercel.app/api/pin/?username=Kitsune-Den&repo=KitsunePaintUnlocked" />
 </a>
-<br><sub>Harmony mod breaking the 255 paint texture hard limit. The limit is now 1023 — four-layer IL patch.</sub>
+<br><sub>Harmony mod breaking the 255 paint texture hard limit. The limit is now 1023. Four-layer IL patch.</sub>
 </td>
 </tr>
 <tr>
@@ -49,7 +49,7 @@
 <a href="https://github.com/Kitsune-Den/KitsuneKitchen7D">
 <img src="https://github-readme-stats.vercel.app/api/pin/?username=Kitsune-Den&repo=KitsuneKitchen7D" />
 </a>
-<br><sub>Cooking expansion — 15 new foods/drinks, 7 custom buffs, magazine progression, Sham Sandwich vendor fix.</sub>
+<br><sub>Cooking expansion. 15 new foods/drinks, 7 custom buffs, magazine progression, Sham Sandwich vendor fix.</sub>
 </td>
 <td width="50%" valign="top">
 <a href="https://github.com/Kitsune-Den/KitsuneVehicleOverhaul">
@@ -81,13 +81,13 @@
 <a href="https://github.com/Kitsune-Den/KitsuneKitchen">
 <img src="https://github-readme-stats.vercel.app/api/pin/?username=Kitsune-Den&repo=KitsuneKitchen" />
 </a>
-<br><sub>Cooking data pack — 12 custom food items with buffs, crafted at the Campfire and Chef's Stove.</sub>
+<br><sub>Cooking data pack. 12 custom food items with buffs, crafted at the Campfire and Chef's Stove.</sub>
 </td>
 <td width="50%" valign="top">
 <a href="https://github.com/Kitsune-Den/KitsuneFox">
 <img src="https://github-readme-stats.vercel.app/api/pin/?username=Kitsune-Den&repo=KitsuneFox" />
 </a>
-<br><sub>Fox companion data pack — craft a Fox Treat and tame a friendly fox to follow you on adventures.</sub>
+<br><sub>Fox companion data pack. Craft a Fox Treat and tame a friendly fox to follow you on adventures.</sub>
 </td>
 </tr>
 <tr>
@@ -95,7 +95,7 @@
 <a href="https://github.com/Kitsune-Den/KitsuneCommandHytale">
 <img src="https://github-readme-stats.vercel.app/api/pin/?username=Kitsune-Den&repo=KitsuneCommandHytale" />
 </a>
-<br><sub>Server management and economy plugin for Hytale — points, teleport, shop, tickets, web panel.</sub>
+<br><sub>Server management and economy plugin for Hytale. Points, teleport, shop, tickets, web panel.</sub>
 </td>
 <td width="50%" valign="top">
 <!-- room for one more Hytale project -->
@@ -113,7 +113,7 @@
 <a href="https://github.com/Kitsune-Den/KitsuneDen">
 <img src="https://github-readme-stats.vercel.app/api/pin/?username=Kitsune-Den&repo=KitsuneDen" />
 </a>
-<br><sub>A warm, unified dashboard for managing home game servers — Minecraft, 7 Days to Die, Hytale & more.</sub>
+<br><sub>A warm, unified dashboard for managing home game servers. Minecraft, 7 Days to Die, Hytale, and more.</sub>
 </td>
 <td width="50%" valign="top">
 <!-- room for next cross-game tool -->
