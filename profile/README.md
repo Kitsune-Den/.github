@@ -66,7 +66,38 @@
 <br><sub>OCB Core Mod fork for Custom Texture Atlas (A20+). Dependency for expanded paint work.</sub>
 </td>
 <td width="50%" valign="top">
-<!-- room for one more 7DTD project -->
+<a href="https://github.com/Kitsune-Den/KitsuneLoads">
+<img src="https://github-readme-stats.vercel.app/api/pin/?username=Kitsune-Den&repo=KitsuneLoads" />
+</a>
+<br><sub>Rotating custom loading-screen backgrounds. Picks one of 13 images at random on every load.</sub>
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+<a href="https://github.com/Kitsune-Den/KitsuneTrapXP">
+<img src="https://github-readme-stats.vercel.app/api/pin/?username=Kitsune-Den&repo=KitsuneTrapXP" />
+</a>
+<br><sub>Trap kills give 100% XP baseline. All trap types, party-shared. Harmony mod for 7D2D 2.x.</sub>
+</td>
+<td width="50%" valign="top">
+<a href="https://github.com/Kitsune-Den/KitsuneZombieReach">
+<img src="https://github-readme-stats.vercel.app/api/pin/?username=Kitsune-Den&repo=KitsuneZombieReach" />
+</a>
+<br><sub>Shortens zombie melee reach so hits land closer to their on-screen position. Server-side XML.</sub>
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+<a href="https://github.com/Kitsune-Den/KitsuneFoxacary">
+<img src="https://github-readme-stats.vercel.app/api/pin/?username=Kitsune-Den&repo=KitsuneFoxacary" />
+</a>
+<br><sub>Fox-crafted medical expansion. 5 new craftable items that slot into the medical journal progression.</sub>
+</td>
+<td width="50%" valign="top">
+<a href="https://github.com/Kitsune-Den/KitsuneFuelSaver">
+<img src="https://github-readme-stats.vercel.app/api/pin/?username=Kitsune-Den&repo=KitsuneFuelSaver" />
+</a>
+<br><sub>Forges and campfires stop burning fuel the moment their craft queue empties. No more babysitting.</sub>
 </td>
 </tr>
 </table>
@@ -116,7 +147,10 @@
 <br><sub>A warm, unified dashboard for managing home game servers. Minecraft, 7 Days to Die, Hytale, and more.</sub>
 </td>
 <td width="50%" valign="top">
-<!-- room for next cross-game tool -->
+<a href="https://github.com/Kitsune-Den/bounty-board">
+<img src="https://github-readme-stats.vercel.app/api/pin/?username=Kitsune-Den&repo=bounty-board" />
+</a>
+<br><sub>Community-sourced mod bounty board. Data-driven via bounties.json, auto-deployed to bb.kitsuneden.net.</sub>
 </td>
 </tr>
 </table>
