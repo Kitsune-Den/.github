@@ -1,0 +1,95 @@
+name: Announce release on Discord
+
+# Reusable workflow: posts a published GitHub Release to a Kitsune Den Discord
+# channel as an embed (title, the first paragraph of the notes, download links,
+# Nexus page). Each mod repo calls it from .github/workflows/announce-release.yml
+# and picks the channel by passing that channel's webhook secret.
+#
+# Org secrets (Settings > Secrets and variables > Actions, visible to public repos):
+#   DISCORD_WEBHOOK_MOD_RELEASES     #📦-mod-releases (every mod by default)
+#   DISCORD_WEBHOOK_PAINTUNLOCKED    Kitsune Paint Unlocked / #update-announcements
+#   DISCORD_WEBHOOK_KITSUNECOMMAND   KitsuneCommand / #📢-releases
+#
+# Drafts and pre-releases are skipped unless a tag is named explicitly
+# (Actions > Announce release > Run workflow), which is also how to re-post one.
+
+on:
+  workflow_call:
+    inputs:
+      tag:
+        description: Release tag to announce (blank = the triggering release, or the latest)
+        type: string
+        default: ''
+      nexus_url:
+        description: The mod's Nexus Mods page, shown as a field when set
+        type: string
+        default: ''
+    secrets:
+      webhook:
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  announce:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Post release to Discord
+        env:
+          WEBHOOK: ${{ secrets.webhook }}
+          TAG: ${{ inputs.tag }}
+          NEXUS: ${{ inputs.nexus_url }}
+          REPO: ${{ github.repository }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if [ -z "$WEBHOOK" ]; then
+            echo "::error::The webhook secret is empty. Add the DISCORD_WEBHOOK_* org secret this repo passes."
+            exit 1
+          fi
+
+          if [ -n "$TAG" ]; then
+            gh api "repos/$REPO/releases/tags/$TAG" > release.json
+          elif [ "$(jq -r '.release // empty | .id' "$GITHUB_EVENT_PATH")" != "" ]; then
+            jq '.release' "$GITHUB_EVENT_PATH" > release.json
+          else
+            gh api "repos/$REPO/releases/latest" > release.json
+          fi
+
+          if [ -z "$TAG" ] && [ "$(jq -r '.draft or .prerelease' release.json)" = "true" ]; then
+            echo "Draft or pre-release, not announcing."
+            exit 0
+          fi
+
+          cat > embed.jq <<'JQ'
+          def clean: gsub("\r"; "") | sub("^[[:space:]]+"; "") | sub("[[:space:]]+$"; "");
+          def cut($n): if length > $n then .[0:($n - 1)] + "…" else . end;
+          def unquote: split("\n") | map(sub("^>[ ]?"; "")) | map(select(test("^[[].*[]][(].*[)]$") | not)) | join("\n");
+          $x[0] as $r
+          | ($r.body // "" | gsub("\r"; "") | split("\n\n") | map(unquote | clean | sub("^[·•][ ]*"; ""))
+              | map(select(length > 0 and (test("^(#|```|<!--|---|[|])") | not))) | first // ""
+              | sub(":$"; ".")) as $summary
+          | ($r.assets // [] | map("[\(.name)](\(.browser_download_url))")) as $dl
+          | ($repo | split("/")[1]) as $mod
+          | {
+              allowed_mentions: { parse: [] },
+              embeds: [{
+                title: ((if ($r.name // "") == "" then "\($mod) \($r.tag_name)" else $r.name end) | cut(256)),
+                url: $r.html_url,
+                description: ((($summary | cut(700)) + "\n\n[Full release notes](\($r.html_url))") | sub("^\n+"; "")),
+                color: 15234604,
+                fields: (
+                  (if ($dl | length) > 0 then [{ name: "Download", value: ($dl | join("\n") | cut(1024)) }] else [] end)
+                  + (if $nexus != "" then [{ name: "Nexus Mods", value: $nexus }] else [] end)
+                ),
+                footer: { text: $mod },
+                timestamp: $r.published_at
+              }]
+            }
+          JQ
+
+          jq -n --slurpfile x release.json --arg repo "$REPO" --arg nexus "$NEXUS" -f embed.jq > payload.json
+          echo "Announcing: $(jq -r '.embeds[0].title' payload.json)"
+          curl -fsS -X POST -H 'Content-Type: application/json' --data @payload.json "$WEBHOOK?wait=true" > /dev/null
+          echo "Posted."
